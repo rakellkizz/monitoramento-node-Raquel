@@ -1,29 +1,52 @@
-const log = require("./logger");
-const apiCheck = require("./checks/apiCheck");
-const pingCheck = require("./checks/pingCheck");
-const portCheck = require("./checks/portCheck");
-const { services } = require("./config");
+// ============================================================================
+// 📁 monitor.js
+// Monitor principal: executa API check, Ping e Port Check
+// Totalmente compatível com ESModules + ultra comentado.
+// ============================================================================
 
-async function run() {
-  log("===== MONITOR INICIADO =====");
+import log from "./logger.js";
+import config from "./config.js";
 
-  for (const service of services) {
-    log(`Checando: ${service.name}`);
+import apiCheck from "./checks/apiCheck.js";
+import pingCheck from "./checks/pingCheck.js";
+import portCheck from "./checks/portCheck.js";
 
-    let result;
+// ----------------------------------------------------------------------------
+// 🎯 Executa monitoramento de cada categoria
+// ----------------------------------------------------------------------------
 
-    if (service.type === "api") result = await apiCheck(service);
-    if (service.type === "ping") result = await pingCheck(service);
-    if (service.type === "port") result = await portCheck(service);
+async function runMonitor() {
+  log("🚀 Iniciando monitoramento automático");
 
-    if (result.ok) {
-      log(`OK: ${service.name} 👍`);
-    } else {
-      log(`❌ Falha em ${service.name}: ${JSON.stringify(result)}`);
-    }
+  // =======================
+  // 🌐 Checagem de APIs
+  // =======================
+  for (const api of config.apis) {
+    const result = await apiCheck(api);
+    log(`API "${api.name}" → ${result.status.toUpperCase()} (${result.responseTime || "erro"} ms)`);
   }
 
-  log("===== MONITOR FINALIZADO =====\n");
+  // =======================
+  // 📡 Pings
+  // =======================
+  for (const host of config.pings) {
+    const result = await pingCheck(host);
+    log(`Ping "${host.name}" → ${result.status.toUpperCase()}`);
+  }
+
+  // =======================
+  // 🔌 Port Check
+  // =======================
+  for (const portTest of config.ports) {
+    const result = await portCheck(portTest);
+    log(`Porta "${portTest.name}" → ${result.status.toUpperCase()}`);
+  }
+
+  log("✔ Monitoramento finalizado.");
 }
 
-run();
+// ----------------------------------------------------------------------------
+// ▶ Execução direta
+// ----------------------------------------------------------------------------
+runMonitor();
+// ============================================================================

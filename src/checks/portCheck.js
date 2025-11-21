@@ -1,21 +1,36 @@
-const net = require("net");
+// ============================================================================
+// 📁 portCheck.js
+// Valida se uma porta TCP está aberta em determinado host.
+// ============================================================================
 
-function portCheck(service) {
+import net from "net";
+
+// ----------------------------------------------------------------------------
+// 🔌 Teste de porta TCP
+// ----------------------------------------------------------------------------
+export default function portCheck(target) {
   return new Promise((resolve) => {
-    const socket = new net.Socket();
-    socket.setTimeout(3000);
+    const socket = net.createConnection(target.port, target.host);
 
-    socket
-      .connect(service.port, service.host, () => {
-        socket.destroy();
-        resolve({ ok: true });
-      })
-      .on("error", () => resolve({ ok: false }))
-      .on("timeout", () => {
-        socket.destroy();
-        resolve({ ok: false });
+    socket.on("connect", () => {
+      socket.end();
+      resolve({
+        type: "port",
+        name: target.name,
+        host: target.host,
+        port: target.port,
+        status: "open"
       });
+    });
+
+    socket.on("error", () => {
+      resolve({
+        type: "port",
+        name: target.name,
+        host: target.host,
+        port: target.port,
+        status: "closed"
+      });
+    });
   });
 }
-
-module.exports = portCheck;

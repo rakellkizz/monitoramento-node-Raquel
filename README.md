@@ -66,11 +66,10 @@ Visualização profissional online:
 ---
 
 # 🟣 Automação CI/CD – Workflows do Projeto
-
 <p align="center">
-  <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?label=Monitoramento%20Autom%C3%A1tico&style=for-the-badge&color=9370DB" />
-  <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/pdf-readme.yml?label=PDF%20Autom%C3%A1tico&style=for-the-badge&color=BA55D3" />
-  <img src="https://img.shields.io/badge/CRON%20Job%20Ativo-8A2BE2?style=for-the-badge&logo=clockify&logoColor=white" />
+  <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?label=Monitoramento%20Automatico&style=for-the-badge&color=9370DB" />
+  <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/pdf-readme.yml?label=PDF%20Automatico&style=for-the-badge&color=BA55D3" />
+  <img src="https://img.shields.io/badge/CRON%20Job%20Ativo-8A2BE2?style=for-the-badge" />
 </p>
 ### 🔁 1. Monitor CI/CD (`monitor.yml`)
 Executa automaticamente o monitor Node.js no GitHub Actions.

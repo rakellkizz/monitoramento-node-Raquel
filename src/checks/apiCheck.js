@@ -1,12 +1,37 @@
-const axios = require("axios");
+// ============================================================================
+// 📁 apiCheck.js
+// Checa se uma API HTTP responde corretamente.
+// Retorna informações de status, latência e código HTTP.
+// ============================================================================
 
-async function apiCheck(service) {
+import fetch from "node-fetch";
+
+// ----------------------------------------------------------------------------
+// 🔍 Função que valida um endpoint HTTP
+// ----------------------------------------------------------------------------
+export default async function apiCheck(target) {
+  const start = performance.now();
+
   try {
-    const r = await axios.get(service.url, { timeout: 5000 });
-    return { ok: true, status: r.status };
+    const response = await fetch(target.url, { method: "GET" });
+    const end = performance.now();
+
+    return {
+      type: "api",
+      name: target.name,
+      url: target.url,
+      status: "online",
+      httpStatus: response.status,
+      responseTime: (end - start).toFixed(2)
+    };
+
   } catch (err) {
-    return { ok: false, error: err.message };
+    return {
+      type: "api",
+      name: target.name,
+      url: target.url,
+      status: "offline",
+      error: err.message
+    };
   }
 }
-
-module.exports = apiCheck;
