@@ -22,7 +22,10 @@ jobs:
             texlive-latex-extra \
             texlive-xetex
 
-      - name: 📝 Gerar PDF do README (imagens ignoradas)
+      - name: 📁 Criar pasta PDF
+        run: mkdir -p pdf-output
+
+      - name: 📝 Gerar PDF do README (ignorar imagens)
         run: |
           pandoc README.md \
             --from markdown \
@@ -30,10 +33,10 @@ jobs:
             --lua-filter=.github/workflows/ignore-images.lua \
             --metadata=title:"Monitoramento Node – Raquel" \
             --metadata=author:"Raquel G. de Souza" \
-            -o README.pdf
+            -o pdf-output/README.pdf
 
-      - name: 📤 Publicar PDF
+      - name: 📤 Publicar PDF como Artifact
         uses: actions/upload-artifact@v4
         with:
           name: README-PDF
-          path: README.pdf
+          path: pdf-output/README.pdf
