@@ -1,3 +1,37 @@
+🟣 STATUS E TECNOLOGIAS
+![Node.js](https://img.shields.io/badge/Node.js-16.20.0-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-Backend-000000?style=for-the-badge&logo=express&logoColor=white)
+![Chart.js](https://img.shields.io/badge/Chart.js-Dashboard-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)
+![Ping](https://img.shields.io/badge/Ping-Monitor-0066ff?style=for-the-badge)
+
+🟣 STATUS DO PROJETO
+![Status](https://img.shields.io/badge/STATUS-ATIVO-success?style=for-the-badge&color=4CAF50)
+
+🟣 WORKFLOW CI/CD
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?style=for-the-badge&label=MONITOR%20CI/CD)
+
+🟣 BADGES ANIMADOS (MARAVILHOSOS 😍)
+![Animated Badge](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=500&color=AA7CFF&width=500&lines=🔥+Monitoramento+de+Serviços+em+Node.js;📊+Dashboard+de+Latência+em+Tempo+Real;🚀+Criado+com+Orgulho+por+Raquel)
+
+🟣 BADGE DE LICENÇA
+![License](https://img.shields.io/badge/LICENSE-MIT-purple?style=for-the-badge)
+
+🟣 BADGE DE REPOSITÓRIO
+![Repo Size](https://img.shields.io/github/repo-size/rakellkizz/monitoramento-node-Raquel?style=for-the-badge&color=7957d5)
+![Last Commit](https://img.shields.io/github/last-commit/rakellkizz/monitoramento-node-Raquel?style=for-the-badge&color=6a5acd)
+
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=800&color=9F79EE&center=true&width=1200&lines=🔥+Monitoramento+Node.js+%7C+Dashboard+Profissional;📡+Ping+%7C+API+%7C+Portas+%7C+Latência+em+Tempo+Real;✨+Criado+com+Excelência+por+Raquel+G.+de+Souza" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=node.js&logoColor=white">
+  <img src="https://img.shields.io/badge/Express-Server-000000?style=for-the-badge&logo=express&logoColor=white">
+  <img src="https://img.shields.io/badge/Chart.js-Dashboard-FF6384?style=for-the-badge&logo=chart.js&logoColor=white">
+  <img src="https://img.shields.io/badge/Ping-Monitor-1E90FF?style=for-the-badge">
+</p>
+
+
 # 💜📡 Monitoramento Node – Raquel
 
 Automação profissional de **monitoramento de serviços**, com:
