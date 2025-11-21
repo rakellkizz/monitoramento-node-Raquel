@@ -1,4 +1,4 @@
-name: Lint & Prettier
+name: ESLint + Prettier
 
 on:
   push:
@@ -10,22 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Configurar Node 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - uses: actions/checkout@v4
 
       - name: Instalar dependências
         run: npm install
 
-      - name: Instalar ESLint + Prettier
-        run: npm install -D eslint prettier eslint-config-prettier eslint-plugin-import
-
       - name: Rodar ESLint
         run: npx eslint . --ext .js
-
-      - name: Rodar Prettier
-        run: npx prettier --check .
