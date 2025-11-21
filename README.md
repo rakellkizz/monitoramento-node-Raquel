@@ -58,13 +58,12 @@ Recursos disponíveis:
 ![Status](https://img.shields.io/badge/STATUS-ATIVO-success?style=for-the-badge&color=4CAF50)
 ![Workflow](https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?style=for-the-badge&label=MONITOR%20CI/CD)
 
-## 📘 PDF
-![PDF](https://img.shields.io/badge/📄_PDF-Gerado_Automaticamente-9F79EE?style=for-the-badge)
-
-
 ## 🔧 Repositório
 ![Repo Size](https://img.shields.io/github/repo-size/rakellkizz/monitoramento-node-Raquel?style=for-the-badge&color=7957d5)
 ![Last Commit](https://img.shields.io/github/last-commit/rakellkizz/monitoramento-node-Raquel?style=for-the-badge&color=6a5acd)
+
+## 📘 PDF
+![PDF](https://img.shields.io/badge/📄_PDF-Gerado_Automaticamente-9F79EE?style=for-the-badge)
 
 ---
 # 🧩 Estrutura do Projeto
