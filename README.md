@@ -63,17 +63,6 @@ Recursos disponíveis:
 ![Last Commit](https://img.shields.io/github/last-commit/rakellkizz/monitoramento-node-Raquel?style=for-the-badge&color=6a5acd)
 
 ---
-
-# 🖼️ Capa Animada (Opcional)
-
-> Coloque seu GIF na pasta: `assets/monitor-cover.gif`
-
-<p align="center">
-  <img src="assets/monitor-cover.gif" alt="Monitoramento Node – Raquel" style="border-radius:12px" />
-</p>
-
----
-
 # 🧩 Estrutura do Projeto
 
 ```bash
