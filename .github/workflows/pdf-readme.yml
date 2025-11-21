@@ -1,0 +1,45 @@
+name: Gerar PDF do README
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Instalar dependências Pandoc + LaTeX
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            pandoc \
+            texlive \
+            texlive-latex-extra \
+            texlive-xetex \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            librsvg2-bin
+
+      - name: 📁 Criar pasta docs
+        run: mkdir -p docs
+
+      - name: 📝 Gerar PDF do README
+        run: |
+          pandoc README.md \
+            --from markdown \
+            --pdf-engine=xelatex \
+            --toc \
+            --metadata=title:"Monitoramento Node – Raquel" \
+            --metadata=author:"Raquel G. de Souza" \
+            -o docs/README.pdf
+
+      - name: 📤 Publicar PDF como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: README-PDF
+          path: docs/README.pdf
