@@ -10,6 +10,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+// 🔥 Correto: apenas UMA declaração de PORT
 const PORT = process.env.PORT || 4000;
 
 const LATENCY_FILE = path.join(__dirname, '..', '..', 'logs', 'latency.json');
@@ -33,6 +35,7 @@ app.get('/api/latency-history', (req, res) => {
   }
 });
 
+// 🔥 Agora sem erro: apenas um app.listen
 app.listen(PORT, () => {
-  console.log(`🚀 Dashboard rodando em: http://localhost:${PORT}`);
+  console.log(`🚀 Dashboard rodando na porta ${PORT}`);
 });
