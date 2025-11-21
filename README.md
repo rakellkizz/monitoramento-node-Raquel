@@ -52,6 +52,37 @@ Visualização profissional online:
 ![Chart.js](https://img.shields.io/badge/Chart.js-Dashboard-FF6384?style=for-the-badge&logo=chart.js&logoColor=white)
 ![Ping](https://img.shields.io/badge/Ping-Monitor-1E90FF?style=for-the-badge)
 
+## 🔧 Ambiente Moderno
+![Node 20](https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![ESModules](https://img.shields.io/badge/ESModules-Ativado-7B68EE?style=for-the-badge&logo=javascript&logoColor=white)
+
+🚀 Modernização do Projeto — ESModules + Node.js 20
+<p align="left"> <img src="https://img.shields.io/badge/Node.js-20+-339933?style=for-the-badge&logo=node.js&logoColor=white" /> <img src="https://img.shields.io/badge/ESModules-Ativado-7B68EE?style=for-the-badge&logo=javascript&logoColor=white" /> <img src="https://img.shields.io/badge/Código_Moderno-✔️-9370DB?style=for-the-badge" /> </p>
+
+Este projeto foi atualizado para utilizar ESModules (import/export), garantindo:
+
+✔ Compatibilidade total com Node.js 20+
+
+✔ Padrão moderno utilizado nas melhores empresas
+
+✔ Imports mais limpos e modulares
+
+✔ Execução otimizada no GitHub Actions e Render
+
+✔ Código mais seguro e escalável
+
+Principais melhorias aplicadas:
+
+🔄 Substituição completa de require() → import
+
+🔄 Remoção de module.exports → export default
+
+🔧 Correção de paths absolutos com fileURLToPath()
+
+📁 Organização dos arquivos em módulos independentes
+
+🧪 Preparação para testes automáticos
+
 ## 🔧 Status
 ![Status](https://img.shields.io/badge/STATUS-ATIVO-success?style=for-the-badge&color=4CAF50)
 ![Workflow](https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?style=for-the-badge&label=MONITOR%20CI/CD)
