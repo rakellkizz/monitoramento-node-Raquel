@@ -1,0 +1,11 @@
+[2025-11-20T23:46:55.516Z] ===== MONITOR INICIADO =====
+[2025-11-20T23:46:55.522Z] Checando: Google Website
+[2025-11-20T23:46:56.389Z] OK: Google Website 👍
+[2025-11-20T23:46:56.397Z] Checando: GitHub API
+[2025-11-20T23:46:56.696Z] OK: GitHub API 👍
+[2025-11-20T23:46:56.697Z] Checando: DNS Cloudflare
+[2025-11-20T23:46:56.774Z] OK: DNS Cloudflare 👍
+[2025-11-20T23:46:56.775Z] Checando: Servidor Local Porta 3000
+[2025-11-20T23:46:56.778Z] ❌ Falha em Servidor Local Porta 3000: {"ok":false}
+[2025-11-20T23:46:56.779Z] ===== MONITOR FINALIZADO =====
+

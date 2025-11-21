@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard de Latência – Raquel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --bg: #050816;
+        --card: #0f172a;
+        --accent: #8b5cf6;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      body {
+        background: radial-gradient(circle at top, #1e293b, #020617);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 960px;
+        background: linear-gradient(135deg, #020617, #020617);
+        border-radius: 18px;
+        padding: 24px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+
+      .title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .title span.icon {
+        font-size: 1.6rem;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .pill {
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(139, 92, 246, 0.15);
+        color: var(--accent);
+        font-size: 0.75rem;
+        border: 1px solid rgba(139, 92, 246, 0.4);
+      }
+
+      .chart-wrapper {
+        margin-top: 16px;
+        background: radial-gradient(circle at top left, #111827, #020617);
+        border-radius: 14px;
+        padding: 16px;
+        border: 1px solid rgba(31, 41, 55, 0.85);
+      }
+
+      canvas {
+        width: 100% !important;
+        max-height: 360px;
+      }
+
+      .footer {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .badge {
+        color: var(--accent);
+      }
+
+      .status-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        margin-right: 6px;
+        background: #22c55e;
+      }
+
+      .status-off {
+        background: #ef4444;
+      }
+
+      @media (max-width: 640px) {
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+        .footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <div class="title">
+            <span class="icon">📡</span>
+            <span>Dashboard de Latência – Raquel</span>
+          </div>
+          <p class="subtitle">
+            Visualização dos tempos de resposta dos hosts monitorados (a partir
+            de <code>logs/latency.json</code>).
+          </p>
+        </div>
+        <div class="pill">
+          <span class="status-dot" id="status-dot"></span>
+          <span id="status-label">Aguardando dados...</span>
+        </div>
+      </header>
+
+      <section class="chart-wrapper">
+        <canvas id="latencyChart"></canvas>
+      </section>
+
+      <footer class="footer">
+        <div>
+          <span class="badge">⚙️ stack:</span>
+          Node.js • Express • Chart.js • Logs em JSON
+        </div>
+        <div>
+          <span class="badge">👩‍💻 criado por:</span> Raquel G. de Souza
+        </div>
+      </footer>
+    </div>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      async function fetchLatencyHistory() {
+        const res = await fetch("/api/latency-history");
+        if (!res.ok) {
+          throw new Error("Erro ao buscar histórico de latência");
+        }
+        return res.json();
+      }
+
+      function buildChart(ctx, data) {
+        // Filtrar apenas entradas do Google DNS com latência válida
+        const googleData = data.filter(
+          (item) =>
+            item.name === "Google DNS" &&
+            item.alive === true &&
+            item.latencyMs !== null
+        );
+
+        if (googleData.length === 0) {
+          return null;
+        }
+
+        const labels = googleData.map((item) =>
+          new Date(item.time).toLocaleTimeString("pt-BR", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          })
+        );
+
+        const values = googleData.map((item) => item.latencyMs);
+
+        return new Chart(ctx, {
+          type: "line",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "Latência – Google DNS (ms)",
+                data: values,
+                tension: 0.3,
+                borderWidth: 2,
+                pointRadius: 3
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                labels: {
+                  color: "#e5e7eb"
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: { color: "#9ca3af" },
+                grid: { display: false }
+              },
+              y: {
+                ticks: { color: "#9ca3af" },
+                grid: {
+                  color: "rgba(55,65,81,0.4)"
+                }
+              }
+            }
+          }
+        });
+      }
+
+      async function init() {
+        const statusDot = document.getElementById("status-dot");
+        const statusLabel = document.getElementById("status-label");
+        const ctx = document.getElementById("latencyChart").getContext("2d");
+
+        try {
+          const history = await fetchLatencyHistory();
+
+          if (!history || history.length === 0) {
+            statusDot.classList.add("status-off");
+            statusLabel.textContent =
+              "Sem dados ainda – rode `node src/latencyMonitor.js`";
+            return;
+          }
+
+          const chart = buildChart(ctx, history);
+
+          if (!chart) {
+            statusDot.classList.add("status-off");
+            statusLabel.textContent = "Sem dados válidos de latência.";
+            return;
+          }
+
+          statusDot.classList.remove("status-off");
+          statusLabel.textContent =
+            "Dashboard online – dados carregados de logs/latency.json";
+        } catch (err) {
+          console.error(err);
+          statusDot.classList.add("status-off");
+          statusLabel.textContent = "Erro ao carregar dados.";
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>

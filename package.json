@@ -1,0 +1,19 @@
+{
+  "name": "monitor-node",
+  "version": "1.0.0",
+  "description": "Monitoramento profissional de APIs, ping, portas, CPU/RAM e dashboard web",
+  "main": "src/monitor.js",
+  "type": "module",
+  "scripts": {
+    "monitor": "node src/monitor.js",
+    "latency": "node src/latencyMonitor.js",
+    "extra": "node src/extraMonitors.js",
+    "dashboard": "node src/dashboard/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "express": "^4.21.0",
+    "ping": "^0.4.4"
+  }
+}
+

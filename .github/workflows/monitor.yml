@@ -1,0 +1,28 @@
+name: Gerar PDF do README
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar Pandoc e LaTeX básico
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-recommended
+
+      - name: Gerar PDF do README
+        run: |
+          mkdir -p docs
+          pandoc README.md -o docs/README.pdf
+
+      - name: Publicar artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: README-pdf
+          path: docs/README.pdf
