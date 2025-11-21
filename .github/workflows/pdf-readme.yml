@@ -1,4 +1,4 @@
-name: Gerar PDF do README
+name: Gerar PDF do README (SEM IMAGENS)
 
 on:
   push:
@@ -6,40 +6,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-pdf:
+  pdf:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout do repositório
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 🛠️ Instalar dependências Pandoc + LaTeX
+      - name: 🛠️ Instalar Pandoc + LaTeX
         run: |
           sudo apt update
           sudo apt install -y \
             pandoc \
             texlive \
             texlive-latex-extra \
-            texlive-xetex \
-            texlive-fonts-recommended \
-            texlive-fonts-extra \
-            librsvg2-bin
+            texlive-xetex
 
-      - name: 📁 Criar pasta docs
-        run: mkdir -p docs
-
-      - name: 📝 Gerar PDF do README
+      - name: 📝 Gerar PDF do README (imagens ignoradas)
         run: |
           pandoc README.md \
             --from markdown \
             --pdf-engine=xelatex \
-            --toc \
+            --lua-filter=.github/workflows/ignore-images.lua \
             --metadata=title:"Monitoramento Node – Raquel" \
             --metadata=author:"Raquel G. de Souza" \
-            -o docs/README.pdf
+            -o README.pdf
 
-      - name: 📤 Publicar PDF como artifact
+      - name: 📤 Publicar PDF
         uses: actions/upload-artifact@v4
         with:
           name: README-PDF
-          path: docs/README.pdf
+          path: README.pdf
