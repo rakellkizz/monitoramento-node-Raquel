@@ -65,6 +65,41 @@ Recursos disponíveis:
 ## 📘 PDF
 ![PDF](https://img.shields.io/badge/📄_PDF-Gerado_Automaticamente-9F79EE?style=for-the-badge)
 
+🟣 Automação CI/CD – Workflows do Projeto
+<p align="center"> <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?label=Monitoramento%20Automático&style=for-the-badge&color=9370DB" /> <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/pdf-readme.yml?label=PDF%20Automático&style=for-the-badge&color=BA55D3" /> <img src="https://img.shields.io/badge/CRON%20Job%20Ativo-⏱️-8A2BE2?style=for-the-badge" /> </p>
+
+Este projeto utiliza Workflows profissionais de CI/CD, garantindo automação real em ambiente GitHub Actions.
+🔁 1. Monitor CI/CD (monitor.yml)
+
+Responsável por executar automaticamente o monitor Node.js no GitHub Actions.
+
+✔ Valida API
+✔ Checa portas configuradas
+✔ Executa pings automáticos
+✔ Testa se o projeto está funcionando
+✔ Garante que o repositório está saudável
+
+📌 Esse workflow não gera arquivos, ele roda o monitor no ambiente de CI.
+
+📄 2. Gerador Automático de PDF (pdf-readme.yml)
+
+Workflow que gera um PDF profissional do README.md em cada push na branch main.
+
+✔ PDF sempre atualizado
+✔ Baixável direto no GitHub Actions
+✔ Útil para portfólio, entrevistas e envio por e-mail
+
+Badge incluído:
+
+
+⏱️ 3. Execução Automática via CRON
+
+O monitor é executado automaticamente em horários agendados, sem você tocar em nada.
+
+✔ Executa todos os dias
+✔ Testa conectividade
+✔ Atualiza o status do projeto
+✔ Simula um ambiente real de monitoramento
 ---
 # 🧩 Estrutura do Projeto
 
