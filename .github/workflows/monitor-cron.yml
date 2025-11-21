@@ -1,0 +1,32 @@
+name: Monitoramento Automático (CRON)
+
+on:
+  schedule:
+    # Roda a cada 30 minutos
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run-monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📦 Instalar dependências
+        run: npm install
+
+      - name: 🚀 Executar monitor principal
+        run: node src/monitor.js
+
+      - name: 📤 Upload do log como Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitor-log
+          path: logs/monitor.log
