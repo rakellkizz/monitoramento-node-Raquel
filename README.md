@@ -33,11 +33,9 @@ Sistema completo de **monitoramento de serviços**, com:
 
 # 🌐 Dashboard em Produção
 
-Meu dashboard profissional está hospedado online:
+Visualização profissional online:
 
 ### 📍 https://monitoramento-node-raquel.onrender.com
-
-Recursos disponíveis:
 
 ✔ Monitoramento em tempo real  
 ✔ Gráfico de latência (Google DNS / Cloudflare)  
@@ -65,42 +63,40 @@ Recursos disponíveis:
 ## 📘 PDF
 ![PDF](https://img.shields.io/badge/📄_PDF-Gerado_Automaticamente-9F79EE?style=for-the-badge)
 
-🟣 Automação CI/CD – Workflows do Projeto
-<p align="center"> <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?label=Monitoramento%20Automático&style=for-the-badge&color=9370DB" /> <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/pdf-readme.yml?label=PDF%20Automático&style=for-the-badge&color=BA55D3" /> <img src="https://img.shields.io/badge/CRON%20Job%20Ativo-⏱️-8A2BE2?style=for-the-badge" /> </p>
-
-Este projeto utiliza Workflows profissionais de CI/CD, garantindo automação real em ambiente GitHub Actions.
-🔁 1. Monitor CI/CD (monitor.yml)
-
-Responsável por executar automaticamente o monitor Node.js no GitHub Actions.
-
-✔ Valida API
-✔ Checa portas configuradas
-✔ Executa pings automáticos
-✔ Testa se o projeto está funcionando
-✔ Garante que o repositório está saudável
-
-📌 Esse workflow não gera arquivos, ele roda o monitor no ambiente de CI.
-
-📄 2. Gerador Automático de PDF (pdf-readme.yml)
-
-Workflow que gera um PDF profissional do README.md em cada push na branch main.
-
-✔ PDF sempre atualizado
-✔ Baixável direto no GitHub Actions
-✔ Útil para portfólio, entrevistas e envio por e-mail
-
-Badge incluído:
-
-
-⏱️ 3. Execução Automática via CRON
-
-O monitor é executado automaticamente em horários agendados, sem você tocar em nada.
-
-✔ Executa todos os dias
-✔ Testa conectividade
-✔ Atualiza o status do projeto
-✔ Simula um ambiente real de monitoramento
 ---
+
+# 🟣 Automação CI/CD – Workflows do Projeto
+
+<p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/monitor.yml?label=Monitoramento%20Autom%C3%A1tico&style=for-the-badge&color=9370DB" />
+  <img src="https://img.shields.io/github/actions/workflow/status/rakellkizz/monitoramento-node-Raquel/pdf-readme.yml?label=PDF%20Autom%C3%A1tico&style=for-the-badge&color=BA55D3" />
+  <img src="https://img.shields.io/badge/CRON%20Job%20Ativo-8A2BE2?style=for-the-badge&logo=clockify&logoColor=white" />
+</p>
+### 🔁 1. Monitor CI/CD (`monitor.yml`)
+Executa automaticamente o monitor Node.js no GitHub Actions.
+
+✔ Valida API  
+✔ Checa portas  
+✔ Executa pings  
+✔ Testa conectividade  
+✔ Garante saúde do projeto  
+
+### 📄 2. Gerador Automático de PDF (`pdf-readme.yml`)
+Gera um PDF profissional do README a cada push na `main`.
+
+✔ Sempre atualizado  
+✔ Disponível em *Artifacts*  
+✔ Profissional para entrevistas  
+
+### ⏱️ 3. Execução Automática via CRON
+Executa monitoramentos agendados sem intervenção humana.
+
+✔ Diário  
+✔ Atualiza estado do projeto  
+✔ Simula monitoramento real  
+
+---
+
 # 🧩 Estrutura do Projeto
 
 ```bash
@@ -137,39 +133,27 @@ monitoramento-node-Raquel/
 ├── package.json
 └── README.md
 ⚙️ Como Rodar Localmente
-1. Instalar dependências
 npm install
-
-2. Rodar o monitor principal
 node src/monitor.js
-
-3. Monitor de latência
 node src/latencyMonitor.js
-
-4. Monitores extras
 node src/extraMonitors.js
-
-5. Dashboard Web
 node src/dashboard/server.js
 
 
-Abra no navegador:
+Acesse:
 
-http://localhost:4000
+➡ http://localhost:4000
 
 📊 Gráfico de Latência
 
-Dados carregados de logs/latency.json
-
-Renderizado via Chart.js
-
-Cada execução do monitor adiciona novos pontos
-
-Suporta múltiplos hosts (Google DNS, Cloudflare, etc.)
+✔ Dados de logs/latency.json
+✔ Renderização com Chart.js
+✔ Novos pontos a cada execução
+✔ Suporte a múltiplos hosts
 
 👩‍💻 Autoria
 
 Criado com 💜 por Raquel G. de Souza
-GitHub: https://github.com/rakellkizz
+🔗 GitHub: https://github.com/rakellkizz
 
-LinkedIn: https://www.linkedin.com/in/raquel-g-de-souza/
+🔗 LinkedIn: https://www.linkedin.com/in/raquel-g-de-souza/
